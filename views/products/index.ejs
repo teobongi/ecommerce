@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>E-commerce App</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Lista dei prodotti</h1>
+
+      <ul>
+        <% products.forEach((product) => { %>
+        <li>
+          <a href="/products/<%= product._id %>"><%= product.nome %></a> - <%=
+          product.prezzo %>€
+          <a href="/products/edit/<%= product._id %>">Modifica</a>
+
+          <form
+            action="products/<%= product._id %>?_method=DELETE"
+            method="POST"
+            style="display: inline"
+          >
+            <button type="submit">Elimina</button>
+          </form>
+        </li>
+        <% }) %>
+      </ul>
+
+      <a href="/products/new" class="button">Aggiungi un nuovo prodotto</a>
+      <a href="/" class="button">Torna alla Homepage</a>
+    </div>
+
+    <footer>&copy; 2023 Ecommerce App. Tutti i diritti riservati.</footer>
+  </body>
+</html>
